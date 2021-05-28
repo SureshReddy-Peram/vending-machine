@@ -22,7 +22,7 @@ public class InventoryController {
     @Autowired
     InventoryService inventoryService;
 
-    @RequestMapping(value = "/v1/add/inventory/", method = RequestMethod.POST)
+    @RequestMapping(value = "/v1/inventory/", method = RequestMethod.POST)
     public ResponseEntity<StandardResponse> addInventory(@Valid @RequestBody AddInventoryDto payload) {
         return inventoryService.addInventory(payload);
     }
