@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -16,10 +18,12 @@ import lombok.NoArgsConstructor;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class Ingredient {
     @Expose
+    @NotNull
     @SerializedName("name")
     private String name;
 
     @Expose
+    @NotNull
     @SerializedName("quantity_required")
     private Integer quantityRequired;
 }

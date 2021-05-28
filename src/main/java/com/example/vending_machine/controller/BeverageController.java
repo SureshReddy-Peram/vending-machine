@@ -27,8 +27,4 @@ public class BeverageController {
         return beverageService.getBeverages();
     }
 
-    @RequestMapping(value = "/v1/order/", method = RequestMethod.POST)
-    public ResponseEntity<StandardResponse> placeOrder(@Valid @RequestBody BeverageOrderRequestDto payload) {
-        return beverageService.placeOrder(payload);
-    }
 }

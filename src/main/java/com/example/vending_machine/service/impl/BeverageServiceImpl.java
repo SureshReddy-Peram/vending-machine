@@ -90,31 +90,4 @@ public class BeverageServiceImpl implements BeverageService {
         return ResponseEntity.status(HttpStatus.OK).body(standardResponse);
     }
 
-    public ResponseEntity<StandardResponse> placeOrder(BeverageOrderRequestDto payload){
-        StandardResponse<String> standardResponse = new StandardResponse();
-        log.info("placeOrder:: payload {}", payload);
-        BeverageEntity beverageEntity = beverageEntityRepository.findByName(payload.getBeverageName());
-        List<IngredientEntity> ingredientEntities = ingredientEntityRepository.findByBeverageId(beverageEntity.getId());
-        for(IngredientEntity entity: ingredientEntities){
-            // notify to refill inventory
-            if(entity.getQuantityRequired() >= entity.getInventory().getQuantity()){
-                //notify
-                standardResponse.setSuccess(false);
-                standardResponse.setMessage("Order can not fulfilled, ingredient {} not available");
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(standardResponse);
-            }
-        }
-        // this will update the quantity in inventory
-        processOrder(ingredientEntities);
-        return ResponseEntity.status(HttpStatus.OK).body(standardResponse);
-    }
-
-    private void processOrder(List<IngredientEntity> ingredientEntities){
-        for(IngredientEntity entity: ingredientEntities){
-            InventoryEntity inventoryEntity = entity.getInventory();
-            int remainingQuantity = inventoryEntity.getQuantity() - entity.getQuantityRequired();
-            inventoryEntity.setQuantity(remainingQuantity);
-            inventoryEntity = inventoryEntityRepository.save(inventoryEntity);
-        }
-    }
 }

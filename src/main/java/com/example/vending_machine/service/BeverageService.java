@@ -10,5 +10,4 @@ public interface BeverageService {
 
     ResponseEntity<StandardResponse> getBeverages();
 
-    ResponseEntity<StandardResponse> placeOrder(BeverageOrderRequestDto payload);
 }

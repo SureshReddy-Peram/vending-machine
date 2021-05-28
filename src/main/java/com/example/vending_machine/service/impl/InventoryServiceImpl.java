@@ -20,10 +20,15 @@ public class InventoryServiceImpl implements InventoryService {
     public ResponseEntity<StandardResponse> addInventory(AddInventoryDto payload){
         StandardResponse<String> standardResponse = new StandardResponse();
         log.info("addInventory:: payload - {}", payload);
-        InventoryEntity inventoryEntity = InventoryEntity.builder()
-                .name(payload.getName())
-                .quantity(payload.getQuantity())
-                .build();
+        InventoryEntity inventoryEntity = inventoryEntityRepository.findByName(payload.getName());
+        if(inventoryEntity==null){
+            inventoryEntity = InventoryEntity.builder()
+                    .name(payload.getName())
+                    .quantity(payload.getQuantity())
+                    .build();
+        }  else{
+            inventoryEntity.setQuantity(payload.getQuantity());
+        }
         inventoryEntity = inventoryEntityRepository.save(inventoryEntity);
         standardResponse.setSuccess(true);
         return ResponseEntity.status(HttpStatus.OK).body(standardResponse);
