@@ -1,8 +1,8 @@
 version: '3.1'
 services:
   app:
-    container_name: vending-machine-app-postgresql
-    image: vending-machine-app-postgresql
+    container_name: vending-machine
+    image: vending-machine
     build: ./
     ports:
       - "8080:8080"
