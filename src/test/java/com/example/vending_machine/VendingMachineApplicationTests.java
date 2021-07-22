@@ -10,4 +10,9 @@ class VendingMachineApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	public void testAddInventory(){
+
+	}
+
 }

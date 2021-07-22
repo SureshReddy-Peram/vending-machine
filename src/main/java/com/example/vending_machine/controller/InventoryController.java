@@ -1,9 +1,7 @@
 package com.example.vending_machine.controller;
 
 import com.example.vending_machine.dto.StandardResponse;
-import com.example.vending_machine.dto.beverage.AddBeverageDto;
 import com.example.vending_machine.dto.inventory.AddInventoryDto;
-import com.example.vending_machine.service.BeverageService;
 import com.example.vending_machine.service.InventoryService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -4,7 +4,6 @@ import com.example.vending_machine.dto.StandardResponse;
 import com.example.vending_machine.dto.ingredient.AddIngredientDto;
 import com.example.vending_machine.repository.IngredientEntityRepository;
 import com.example.vending_machine.service.IngredientService;
-import com.example.vending_machine.service.InventoryService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
