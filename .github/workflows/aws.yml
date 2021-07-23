@@ -29,6 +29,10 @@ on:
 
 name: Deploy to Amazon ECS
 
+env:
+  ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
+  ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
+
 jobs:
   deploy:
     name: Deploy
